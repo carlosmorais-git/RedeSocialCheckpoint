@@ -5,11 +5,12 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 import os
-
+import sqlalchemy
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'aa749d5659aa92382d79c177cdb4445e057b2184'
+
 
 if os.getenv('DATABASE_URL'):
     
@@ -29,6 +30,23 @@ login_manager.login_view = 'login'
 login_manager.login_message = 'Entre em uma conta primeiro! Para prosseguir.'
 login_manager.login_message_category = 'alert-warning'
 
+
+
+from projetoclube import models
+
+engine = sqlalchemy.create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
+
+# esse inspector serve para verificar se uma tabela existe dentro do banco de dados
+inspector = sqlalchemy.inspect(engine)
+
+# verifica se o banco de dados já criado nao tem a tabela 'usuario'
+if not inspector.has_table("usuario"):
+    with app.app_context():
+        database.drop_all()
+        database.create_all()
+        print('Banco de dados criado')
+else:
+    print('Banco de dados já existe')
 
 # Importando meus links apos a criancao do meu 'app'
 from projetoclube import routes

@@ -102,7 +102,7 @@ def criarConta():
     form_criar_conta = CriarFormulario_criarConta()
     if form_criar_conta.validate_on_submit():
         # criptrografando o senha do usuario
-        senha_criptrografada = bcrypt.generate_password_hash(form_criar_conta.senha.data)
+        senha_criptrografada = bcrypt.generate_password_hash(form_criar_conta.senha.data).decode('utf-8')
 
         # criar um usuario - nome,email,senha
         usuario = Usuario(nome_usuario = form_criar_conta.usuario.data, 
