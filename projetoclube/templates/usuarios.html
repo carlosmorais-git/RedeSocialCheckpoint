@@ -1,0 +1,111 @@
+<!--Extendi o arquivo base que servirá de base para todas as nossas formataçoes-->
+{% extends 'base.html' %}
+
+<!--Esse bloco irá substitui body da pagina base -->
+{% block body %}
+    <div class="container">
+
+            <h1>{{ titulo }}</h1>
+            <h3>{{ subtitulo}}</h3><br>
+
+        <!--Esse bloco usa o for, uma logica do python-->
+        {% for usuario in lista_usuarios %}
+
+            {% if usuario != current_user %}
+                
+                <hr>
+
+                <div class="mt-5 d-flex justify-content-center">
+
+                    <div class="card p-3">
+
+                        <div class="d-flex align-items-center">
+
+                            <div class="image pe-3">
+                            <img src="{{ url_for('static', filename='fotos_perfil/{}'.format(usuario.foto_perfil)) }}" class="rounded" width="155" >
+                            </div>
+                        
+
+                        <div class="ml-3 w-100">
+                            
+                            <h4 class="mb-1 mt-3">{{ usuario.nome_usuario.title() }}</h4>
+                            
+                            
+                            <div class="p-3 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+
+                                <div class="d-flex flex-column">
+
+                                    <span class="articles">Histórias Compartilhadas</span>
+                                    <span class="number1">{{ usuario.contar_posts() }}</span>
+                                    
+                                </div>
+
+                                <div class="d-flex flex-column">
+
+                                    <span class="followers">Ranking</span>
+                                    <span class="number2">5ª</span>
+                                    
+                                </div>
+
+                                <div class="d-flex flex-column">
+
+                                    <span class="followers">Comunidade</span>
+                                    <span class="number2">123</span>
+                                    
+                                </div>
+
+
+                                <div class="d-flex flex-column">
+
+                                    <span class="rating">Avaliação Geral</span>
+                                    <span class="number3">8.9</span>
+                                    
+                                </div>
+                                
+                            </div>
+                        
+                            
+                            
+                            <!--Campo Flexivel de Botoes-->
+                            <div class=" justify-content-between mt-2 d-flex align-items-center gap-2" >
+                                
+                                <a href="{{ url_for('editar_perfil') }}" class=" w-50">
+                                    <button class="btn btn-sm btn-outline-primary w-100">Seguir</button>
+                                </a>
+
+                                <a href="{{ url_for('editar_perfil') }}" class=" w-50">                        
+                                    <button class="btn btn-sm btn-outline-primary w-100">Ver Perfil</button>
+                                </a>
+                                
+
+                            </div>
+
+                            </div>
+                        </div>
+
+
+                        <!--Area de Atividade do Perfil-->
+                        <br>
+                        <div >
+                            <h4>Bio</h4>
+                            <br>
+                            <p>
+                                {{ usuario.bio }}
+                            </p>
+                        </div>
+
+                        
+                    </div>
+                    
+                    
+                </div>
+
+            
+            {% endif %}
+        <br>
+        {% endfor %}
+        
+      
+    </div>
+  
+{% endblock %}

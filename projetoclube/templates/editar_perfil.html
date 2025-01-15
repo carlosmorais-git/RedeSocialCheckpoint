@@ -1,0 +1,191 @@
+<!--Extendi o arquivo base que servirá de base para todas as nossas formataçoes-->
+{% extends 'base.html' %}
+
+<!--Esse bloco irá substitui body da pagina base -->
+{% block body %}
+    <div class="container mt-3">
+    <h1>{{ titulo }}</h1>
+    <hr>
+   
+    <div class="mt-5 d-flex justify-content-center">
+
+        <div class="card p-3">
+
+            <div class="d-flex align-items-center">
+
+                <form method="POST" enctype="multipart/form-data">
+                    <!-- Outros campos de edição -->
+                
+                    <!-- Campo de foto de perfil -->
+                    {% if edit_mode['foto_perfil'] %}
+                        <img src="{{ foto_perfil }}" alt="Foto de Perfil" width="100" height="100">
+
+                        <input type="file" name="foto_perfil" id="foto_perfil" accept="image/*" required>
+                        <input type="hidden" name="field" value="foto_perfil">
+                        <button type="submit" class=" m-1 col-auto btn btn-sm btn-outline-primary w-20">Salvar</button>
+                        <a href="{{ url_for('reset', field='foto_perfil') }}" class="edit-icon">❌</a>
+                    {% else %}
+                    <div style="display: flex; align-items: center; gap: 10px;" >
+                        
+                        <img src="{{ foto_perfil }}" alt="Foto de Perfil">
+                        <a href="{{ url_for('edit', field='foto_perfil') }}" class="edit-icon">✏️
+                        </a>
+
+                    </div>
+                    {% endif %}
+                </form>
+                
+                
+            
+                <div class="ml-3 w-100">
+
+                    {% if edit_mode['nome_usuario'] %}
+                        <form method="POST" >
+                           
+                            <div class="d-flex">
+
+                                <input type="text" class="form-control" style="width: 65%;" name="value" value="{{ current_user.nome_usuario.title() }}" required>
+                                <input type="hidden" name="field" value="nome_usuario">
+                                <button type="submit" class=" m-1 col-auto btn btn-sm btn-outline-primary w-20">Confirmar Edição</button>
+                                <a href="{{ url_for('reset', field='nome_usuario') }}" class="edit-icon">❌</a>
+
+                            </div>
+                        
+                        </form>
+                        
+                        {% else %}
+                        <div style="display: flex; align-items: center; gap: 10px;" >
+                            <h4 class="mb-0 mt-0">{{ current_user.nome_usuario.title() }}</h4>
+                            <a href="{{ url_for('edit', field='nome_usuario') }}" class="edit-icon">✏️</a>
+                        </div>
+
+                    {% endif %}
+
+                    
+
+                        {% if edit_mode['email'] %}
+                        <form method="POST" action="" class="mt-2">
+                        
+
+                           
+    
+                        {% if erro_encontrado  %}
+                            <div class="d-flex">
+
+                                <input type="email" class="form-control is-invalid" style="width: 65%;" name="value" value="{{ current_user.email }}" required>
+                                <input type="hidden" name="field" value="email"> 
+                                <button type="submit" class=" m-1 col-auto btn btn-sm btn-outline-primary w-20">Confirmar Edição</button>
+                                <a href="{{ url_for('reset', field='email') }}" class="edit-icon">❌</a>
+                   
+                            </div>
+                            
+                            {% else %}
+                            <div class="d-flex">
+
+                                <input type="email" class="form-control" style="width: 65%;" name="value" value="{{ current_user.email }}" required>
+                                <input type="hidden" name="field" value="email">
+                                <button type="submit" class=" m-1 col-auto btn btn-sm btn-outline-primary w-20">Confirmar Edição</button>
+                                <a href="{{ url_for('reset', field='email') }}" class="edit-icon">❌</a>
+
+                            </div>
+
+                        
+                        {% endif %}
+                        
+                        </form>
+
+                            {% else %}
+                            <div style="display: flex; align-items: center; gap: 10px;" >
+                                <span>{{ current_user.email }}</span>
+                                <a href="{{ url_for('edit', field='email') }}" class="edit-icon">✏️</a>
+                                
+                            </div>
+                        {% endif %}
+
+                
+                <div class="p-3 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+
+                <div class="d-flex flex-column">
+
+                    <span class="articles">Histórias Compartilhadas</span>
+                    <span class="number1">0</span>
+                    
+                </div>
+
+                <div class="d-flex flex-column">
+
+                    <span class="followers">Ranking</span>
+                    <span class="number2">5ª</span>
+                    
+                </div>
+
+                <div class="d-flex flex-column">
+
+                    <span class="followers">Comunidade</span>
+                    <span class="number2">123</span>
+                    
+                </div>
+
+
+                <div class="d-flex flex-column">
+
+                    <span class="rating">Avaliação Geral</span>
+                    <span class="number3">8.9</span>
+                    
+                </div>
+                   
+               </div>
+
+               
+            
+               <div >
+                <a class="button mt-2 d-flex flex-row align-items-center" href="{{ url_for('reset',field='resetar') }}">
+                
+                    <button class="btn btn-sm btn-outline-primary w-100">Sair Do Modo Edição</button>
+                </a>
+
+            </div>
+
+              
+            </div>
+
+                
+            </div>
+
+            <!--Area de Atividade do Perfil-->
+            <br>
+            <div >
+                
+                <h4>Bio</h4>
+                <br>                
+                {% if edit_mode['bio'] %}
+                <form method="POST">
+                    
+
+                    <textarea name="value" class="campos-uniformes" rows="3" required>{{ current_user.bio }} </textarea>
+                    <input type="hidden" name="field" value="bio">                    
+                    <button type="submit" class="col-auto btn btn-sm btn-outline-primary w-20 mt-2">Confirmar Edição</button>
+                    <a href="{{ url_for('reset', field='bio') }}" class="edit-icon">❌</a>
+                </form>
+                {% else %}
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <p>{{ current_user.bio }}</p>
+                    <a href="{{ url_for('edit', field='bio') }}" class="edit-icon">✏️</a>
+                    {% endif %}
+
+                </div>
+            </div>
+
+            
+        </div>
+        
+        
+      
+         
+     </div>
+    </div>
+{% endblock %}
+
+
+
+

@@ -1,0 +1,111 @@
+<!--Extendi o arquivo base que servirá de base para todas as nossas formataçoes-->
+{% extends 'base.html' %}
+
+<!--Esse bloco irá substitui body da pagina base -->
+{% block body %}
+    <div class="container mt-3">
+        
+     
+            <div class="row">
+
+                    <div class="col col-12">
+                        <div class="row">
+                            <div class="col col-9 d-flex align-items-center">
+                                <div class="image pe-3">
+                                    <img src="{{ url_for('static', filename='fotos_perfil/{}'.format(post.autor.foto_perfil)) }}" 
+                                        class="rounded" width="50">
+                                </div>
+                                <div>
+                                    <strong>{{ post.autor.nome_usuario }}</strong>
+                                    <br>
+                                    <span style="font-size: small;">
+                                        Ranking <strong> 5° </strong> |  
+                                        Histórias Compartilhadas <strong>{{ current_user.contar_posts() }}</strong>  |  
+                                        Clube <strong>1.2M</strong> | 
+                                        Avaliação Geral <strong>9.4</strong>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="post">
+                        <div class="col col-9" >
+        
+                            <h3>{{ post.titulo }}
+
+                            <small class="text-muted" style="font-size: 15px;"> -  {{ post.tempo_relativo() }}
+                                {% if form %}
+                                    <!-- Para usar os id como referência de link usa o #  -->
+                                    - <a href="#id_formulario_criar_editar_post"> Editar</a>
+                                    
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#excluir_post" class="text-danger">/ ❌ Excluir</a>
+                                    
+                                {% endif %}
+                            </small>
+                            
+                            </h3>
+                            
+                            <p>{{ post.corpo }}</p>
+                            
+                       
+                            <div class=" justify-content-between mt-4 gap-2 align-items-center ">
+                            
+                                <a href="{{ url_for('editar_perfil') }}" class=" w-10 p-3">
+                                    avaliar
+                                </a>
+        
+                                <a href="{{ url_for('editar_perfil') }}" class=" w-10 p-3">                        
+                                    opinar
+                                </a>
+        
+                                <a href="{{ url_for('editar_perfil') }}" class=" w-10 p-3">
+                                    +clube
+                                </a>
+        
+                                <a href="{{ url_for('editar_perfil') }}" class=" w-10 p-3">                        
+                                    Ver Perfil
+                                </a>
+                
+                            </div>
+                    </div>
+                    
+                    
+                    
+            </div>
+
+
+        {% if form %}
+
+            {% include 'criar_post.html' %}
+            
+        {% endif %}
+    </div>
+
+        <!-- Modal precisa esta na pagina para ter a referencia dele, 
+         isso exibi uma caixa de alerta pro susuario-->
+
+    <div class="modal fade" id="excluir_post" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Você quer realmente excluir esse POST? (Essa ação não pode ser desfeita)
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+            <form method="post" action="{{ url_for('excluir_post', field=post.id) }}">
+
+                <button type="submit" class="btn btn-danger">Excluir Post</button>
+                
+            </form>
+            </div>
+        </div>
+        </div>
+    </div>
+{% endblock %}

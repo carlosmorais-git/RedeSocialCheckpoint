@@ -1,0 +1,100 @@
+<!--Extendi o arquivo base que servirá de base para todas as nossas formataçoes-->
+{% extends 'base.html' %}
+
+<!--Esse bloco irá substitui body da pagina base -->
+{% block body %}
+<div class="container mt-3">
+<h2 class="mt-3" style="text-align: center;">Criar Conta</h2>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <form method="post" action="" class="mx-auto p-2" style="width: 500px;">
+                <!--Token de segurança-->
+                {{ form_criar_conta.csrf_token }}
+                <legend style="text-align: center;">Crie sua conta. Entra pro Clube do Jogo!</legend>
+                <fieldset>
+                    <div class="form-group">
+                        {{ form_criar_conta.usuario.label(class="form-control-label") }}
+                        {{ form_criar_conta.usuario(class="form-control" , placeholder='Novo usuario') }}
+                    </div>
+                    <div class="form-group">  
+                        {{ form_criar_conta.email.label(class="form-control-label") }}
+
+                        <!--Verifico se o email tem erro de digitação e modifico o campo pelo erro
+                        com a class is-invalid, servi para mudar a aparencia de um campo valido para não valido-->
+                        {%  if form_criar_conta.email.errors %}
+
+                            {{ form_criar_conta.email(class="form-control is-invalid" , placeholder='Digite um e-mail') }}
+                           <div class="invalid-feedback">
+                               {% for erro in form_criar_conta.email.errors %}
+                                   
+                                   {{erro}}
+   
+                               {% endfor %}
+                           </div>
+                        <!--Tudo certo passo o campo sem erro-->
+                        {% else %}
+                            {{ form_criar_conta.email(class="form-control" , placeholder='Digite um e-mail') }}
+                      
+                        {% endif %}
+
+                    </div> 
+                    <div class="form-group">
+                        {{ form_criar_conta.senha.label(class="form-control-label") }}
+
+                        <!--Verifico se senha é menor que o tamanho minimo ou maior que o maximo
+                        com a class is-invalid ela servi para exibir um texto explicando as condições ao usuario-->
+                        {%  if form_criar_conta.senha.errors %}
+
+                            {{ form_criar_conta.senha(class="form-control is-invalid" , placeholder='Criar uma senha') }}
+                           <div class="invalid-feedback">
+                               {% for erro in form_criar_conta.senha.errors %}
+                                   
+                                   {{erro}}
+   
+                               {% endfor %}
+                           </div>
+                        <!--Tudo certo passo o campo sem erro-->
+                        {% else %}
+                            {{ form_criar_conta.senha(class="form-control" , placeholder='Criar uma senha') }}
+                      
+                        {% endif %}
+
+
+                    </div>
+                    <div class="form-group">
+                        {{ form_criar_conta.confirmacao_senha.label(class="form-control-label") }}
+
+                        <!--Verifico se senha é a mesma que a criada 
+                        com a class is-invalid ela servi para exibir um texto explicando as condições ao usuario-->
+                        {%  if form_criar_conta.confirmacao_senha.errors %}
+
+                            {{ form_criar_conta.confirmacao_senha(class="form-control is-invalid" , placeholder='Repete a mesma senha') }}
+                           <div class="invalid-feedback">
+                               {% for erro in form_criar_conta.confirmacao_senha.errors %}
+                                   
+                                   {{erro}}
+   
+                               {% endfor %}
+                           </div>
+                        <!--Tudo certo passo o campo sem erro-->
+                        {% else %}
+                            {{ form_criar_conta.confirmacao_senha(class="form-control" , placeholder='Repete a mesma senha') }}
+                      
+                        {% endif %}
+                        
+                    </div>
+                    
+                    <div class="mt-3" style="display: flex; align-items: center; gap: 10px;">                        
+                        {{ form_criar_conta.botao_submit_criarconta(class="btn btn-primary",style="width:250px") }}
+                        <a class="dropdown-item" href="{{ url_for('login') }}" style="color: #d80000;">Eu tenho uma conta! Fazer Login.</a>
+                    </div>
+            </fieldset>
+            </form>
+           
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}

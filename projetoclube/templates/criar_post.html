@@ -1,0 +1,78 @@
+
+<!--Esse bloco irá substitui body da pagina base -->
+{% block body %}
+
+ 
+    <div class="container mt-3">
+        <div class="row" >
+            <div class="col">
+                <form method="post" action="" id="id_formulario_criar_editar_post" class="mx-auto p-2" style="width: 500px;">
+                    <!--Token de segurança-->
+                    {{ form.csrf_token }}
+                    <legend style="text-align: center;">{{ titulo }}</legend>
+                    <fieldset>
+                        <div class="form-group">
+
+                            {{ form.titulo.label(class="form-control-label") }}
+
+                            <!--Verifico se o titulo tem erro de digitação e modifico o campo pelo erro
+                            com a class is-invalid, servi para mudar a aparencia de um campo valido para não valido-->
+                            {%  if form.titulo.errors %}
+
+                                {{ form.titulo(class="form-control is-invalid" , placeholder='Preencha com E-mail válido "@"') }}
+                            <div class="invalid-feedback">
+                                {% for erro in form.titulo.errors %}
+                                    
+                                    {{erro}}
+    
+                                {% endfor %}
+                            </div>
+                            <!--Tudo certo passo o campo sem erro-->
+                            {% else %}
+                                {{ form.titulo(class="form-control" , placeholder='Digite um Titulo Impactante') }}
+                        
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+
+                            {{ form.corpo.label(class="form-control-label") }}
+
+                            <!--Verifico se o corpo tem erro de digitação e modifico o campo pelo erro
+                            com a class is-invalid, servi para mudar a aparencia de um campo valido para não valido-->
+                            {%  if form.corpo.errors %}
+
+                                {{ form.corpo(class="form-control is-invalid" , placeholder='Digite um Titulo Impactante') }}
+                            <div class="invalid-feedback">
+                                {% for erro in form.corpo.errors %}
+                                    
+                                    {{erro}}
+    
+                                {% endfor %}
+                            </div>
+                            <!--Tudo certo passo o campo sem erro-->
+                            {% else %}
+                                {{ form.corpo(class="form-control" , placeholder='Conte uma Nova História') }}
+                        
+                            {% endif %}
+                        </div>
+                                            
+                        <div class="mt-3" style="display: flex; align-items: center; gap: 20px;" >
+                           
+                            <button type="submit" class="btn btn-primary" ,style="width:500px"> {{ botao_submit_criar_post }}</button> 
+
+                            <a class="dropdown-item" href="{{ url_for('home') }}" style="color: #d80000;">Cancelar</a>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+{% endblock %} 

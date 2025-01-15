@@ -1,0 +1,162 @@
+<!--Extendi o arquivo base que servirá de base para todas as nossas formataçoes-->
+{% extends 'base.html' %}
+
+<!--Esse bloco irá substitui body da pagina base -->
+{% block body %}
+    <div class="container mt-3">
+    <div>
+
+
+    <div class="mt-5 d-flex justify-content-center">
+
+        <div class="card p-3">
+
+            <div class="d-flex align-items-center">
+
+                <div class="image pe-3">
+                <img src="{{ foto_perfil }}" class="rounded" width="155" >
+            </div>
+
+            <div class="ml-3 w-100">
+                
+               <h4 class="mb-0 mt-0">{{ current_user.nome_usuario.title() }}</h4>
+               <span>{{ current_user.email }}</span>
+                
+               {% block texto_resumo %}
+               <div class="p-3 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+
+                <div class="d-flex flex-column">
+
+                    <span class="articles">Histórias Compartilhadas</span>
+                    <span class="number1">{{ current_user.contar_posts() }}</span>
+                    
+                </div>
+
+                <div class="d-flex flex-column">
+
+                    <span class="followers">Ranking</span>
+                    <span class="number2">5ª</span>
+                    
+                </div>
+
+                <div class="d-flex flex-column">
+
+                    <span class="followers">Comunidade</span>
+                    <span class="number2">123</span>
+                    
+                </div>
+
+
+                <div class="d-flex flex-column">
+
+                    <span class="rating">Avaliação Geral</span>
+                    <span class="number3">8.9</span>
+                    
+                </div>
+                   
+               </div>
+               {% endblock %}
+
+               <div >
+                   <a class="button mt-2 d-flex flex-row align-items-center" href="{{ url_for('editar_perfil') }}">
+                   
+                       <button class="btn btn-sm btn-outline-primary w-100">Editar Perfil</button>
+                   </a>
+
+               </div>
+               
+
+
+            </div>
+
+                
+            </div>
+
+            <!--Area de Atividade do Perfil-->
+            <br>
+            <div >
+                <h4>Bio</h4>
+                <br>
+                <p>
+                    {{ current_user.bio }}
+                </p>
+            </div>
+
+            
+        </div>
+        
+            
+         
+     </div>
+    </div>
+    <br>
+    <br> 
+
+    <h1>{{ titulo }}</h1>
+    <hr>
+    <br>
+     {% for post in posts %}
+
+     <div class="row">
+
+             <div class="col col-12">
+                 <div class="row">
+                     <div class="col col-9 d-flex align-items-center">
+                         <div class="image pe-3">
+                             <img src="{{ url_for('static', filename='fotos_perfil/{}'.format(post.autor.foto_perfil)) }}" 
+                                 class="rounded" width="50">
+                         </div>
+                         <div>
+                            <strong>Você</strong>
+                            <small class="text-muted m-2" style="font-size: 15px;"> 
+                                 {{ post.tempo_relativo() }}
+                            </small>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+
+
+             <div class="post">
+                 <div class="col col-9" >
+                     <a href="{{ url_for('exibir_post',field = post.id) }}" class=" w-10 p-3">                        
+                         
+                         <h3>{{ post.titulo}}</h3>
+                     </a>
+                     <p>{{ post.corpo }}</p>
+                     
+                 </div>
+
+                 <div class=" justify-content-between mt-4 gap-2 align-items-center ">
+                 
+                     <a href="{{ url_for('editar_perfil') }}" class=" w-10 p-3">
+                         avaliar
+                     </a>
+
+                     <a href="{{ url_for('editar_perfil') }}" class=" w-10 p-3">                        
+                         opinar
+                     </a>
+
+                     <a href="{{ url_for('editar_perfil') }}" class=" w-10 p-3">
+                         +clube
+                     </a>
+
+                     <a href="{{ url_for('editar_perfil') }}" class=" w-10 p-3">                        
+                         Ver Perfil
+                     </a>
+                     
+
+                 </div>
+
+             </div>
+         
+
+     </div>
+
+
+
+ {% endfor %}
+    </div>
+
+
+{% endblock %} 

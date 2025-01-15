@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+    <style>
+        #foto_perfil {
+            display: none;
+        }
+
+        label {
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            font-size: 14px;
+        }
+
+        #file-name {
+            font-size: 14px;
+            margin-left: 10px;
+            color: gray;
+        }
+
+        .btn-cancelar {
+            cursor: pointer;
+            background-color: #ff4d4d;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="/perfil/editar" method="POST" enctype="multipart/form-data">
+        <!-- Imagem atual do perfil -->
+        <img id="foto-atual" src="/static/fotos_perfil/imagem_atual.png" 
+             alt="Foto de perfil" width="100" height="100" style="border-radius: 50%;">
+        <br><br>
+
+        <!-- Botão para selecionar nova foto -->
+        <label for="foto_perfil">Escolher Foto</label>
+        <input type="file" id="foto_perfil" name="foto_perfil" accept="image/*">
+        <span id="file-name"></span>
+
+        <!-- Botão para cancelar -->
+        <span class="btn-cancelar" id="cancelar">Cancelar</span>
+
+        <br><br>
+        <button type="submit">Salvar</button>
+    </form>
+
+    <script>
+        const inputFile = document.getElementById('foto_perfil');
+        const fileNameDisplay = document.getElementById('file-name');
+        const cancelarButton = document.getElementById('cancelar');
+        const fotoAtual = document.getElementById('foto-atual');
+
+        // Quando um arquivo é selecionado, exibe o nome do arquivo
+        inputFile.addEventListener('change', function () {
+            if (this.files && this.files[0]) {
+                fileNameDisplay.textContent = this.files[0].name;
+            } else {
+                fileNameDisplay.textContent = "";
+            }
+        });
+
+        // Botão cancelar: limpa o campo de arquivo e restaura o estado inicial
+        cancelarButton.addEventListener('click', function () {
+            // Limpa o campo de upload
+            inputFile.value = "";
+            fileNameDisplay.textContent = "";
+
+            // Recarrega a imagem para a original (opcional)
+            fotoAtual.src = "/static/fotos_perfil/imagem_atual.png";
+
+            // Opcional: exibe um alerta ou mensagem de cancelamento
+            console.log("Alteração de foto cancelada");
+        });
+    </script>
+</body>
+</html>

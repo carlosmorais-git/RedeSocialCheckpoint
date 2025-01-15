@@ -1,0 +1,166 @@
+body{
+    
+    background-color:#e7e7e7;
+    border-radius: 10px;
+
+}
+a{
+  text-decoration: none
+}
+
+.card{
+  width: 750px;
+  border: none;
+  border-radius: 10px;
+   
+  background-color: #fff;
+}
+
+
+
+.stats{
+
+      background: #f2f5f8 !important;
+
+    color: #000 !important;
+}
+.articles{
+  font-size:10px;
+  color: #a1aab9;
+}
+.number1{
+  font-weight:500;
+}
+.followers{
+    font-size:10px;
+  color: #a1aab9;
+
+}
+.number2{
+  font-weight:500;
+}
+.rating{
+    font-size:10px;
+  color: #a1aab9;
+}
+.number3{
+  font-weight:500;
+}
+
+.alinha_ao_lado{
+  display: flex; 
+  align-items: center; 
+  gap: 10px;
+}
+
+.campos-uniformes {
+  width: 100%; /* Preenche a largura disponível */
+  padding: 0.375rem 0.75rem; /* Espaçamento interno */
+  font-size: 1rem; /* Tamanho da fonte */
+  line-height: 1.5; /* Altura da linha */
+  color: #495057; /* Cor do texto */
+  background-color: #fff; /* Fundo branco */
+  border: 1px solid #ced4da; /* Borda */
+  border-radius: 0.25rem; /* Bordas arredondadas */
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Paleta de cores */
+:root {
+  --primary-bg: #1E293B;       /* Azul acinzentado - fundo principal */
+  --secondary-bg: #F9FAFB;    /* Branco gelo - fundo secundário */
+  --text-color: #94A3B8;      /* Cinza médio - texto secundário */
+  --highlight: #0EA5E9;       /* Ciano vibrante - botões principais, links */
+  --success: #22C55E;         /* Verde neon suave - status ou sucesso */
+  --error: #EF4444;           /* Vermelho suave - alertas ou erros */
+  --accent: #6D28D9;          /* Roxo escuro - detalhes discretos */
+}
+
+/* Estilo Geral */
+body {
+  background-color: var(--secondary-bg); /* Fundo claro */
+  color: var(--primary-bg);             /* Texto principal */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Links */
+a {
+  color: var(--highlight);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent); /* Mudança ao passar o mouse */
+}
+
+/* Botões */
+button {
+  background-color: var(--highlight);
+  color: var(--secondary-bg);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--accent);
+}
+
+/* Notificações */
+.alert-success {
+  background-color: var(--success);
+  color: var(--secondary-bg);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.alert-error {
+  background-color: var(--error);
+  color: var(--secondary-bg);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+/* Cabeçalho */
+header {
+  background-color: var(--primary-bg);
+  color: var(--secondary-bg);
+  padding: 15px 20px;
+  text-align: center;
+  font-size: 24px;
+}
+
+/* Cards ou Seções */
+.card {
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--text-color);
+  padding: 20px;
+  margin: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+  background-color: var(--primary-bg);
+  color: var(--text-color);
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.post{
+  border-radius: 10px;
+  background-color: #fff;
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--text-color);
+  padding: 20px;
+  margin: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}

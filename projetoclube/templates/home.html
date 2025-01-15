@@ -1,0 +1,95 @@
+<!--Extendi o arquivo base que servirá de base para todas as nossas formataçoes-->
+{% extends 'base.html' %}
+
+<!--Esse bloco irá substitui body da pagina base -->
+{% block body %}
+    <div class="container mt-3">
+        <h1>{{ titulo }}</h1>
+        <h2>{{ subtitulo }}</h2>
+        <hr>
+        <!--Incluindo o formulario da pagina post-->
+        {% include 'criar_post.html' %}
+        
+        {% for post in posts %}
+            <br>
+            <div class="row">
+
+                    <div class="col col-12">
+                        <div class="row">
+                            <div class="col col-9 d-flex align-items-center">
+                                <div class="image pe-3">
+                                    <img src="{{ url_for('static', filename='fotos_perfil/{}'.format(post.autor.foto_perfil)) }}" 
+                                        class="rounded" width="50">
+                                </div>
+
+                                {% if post.autor == current_user %}
+
+                                <strong>Você</strong>
+                                <small class="text-muted m-2" style="font-size: 15px;"> 
+                                     {{ post.tempo_relativo() }}
+                                </small>
+
+                                {% else %}
+                                
+                                    <div>
+                                        <strong>{{ post.autor.nome_usuario }}</strong>
+                                        <small class="text-muted m-2" style="font-size: 15px;"> 
+                                             {{ post.tempo_relativo() }}
+                                        </small>
+                                        <br>
+                                        <span style="font-size: small;">
+                                            Ranking <strong> 5° </strong> |  
+                                            Histórias Compartilhadas <strong>{{ post.autor.contar_posts() }}</strong>  |  
+                                            Clube <strong>1.2M</strong> | 
+                                            Avaliação Geral <strong>9.4</strong>
+                                        </span>
+                                        
+                                    </div>
+                                    {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="post">
+                        <div class="col col-9" >
+                            <a href="{{ url_for('exibir_post',field = post.id) }}" class=" w-10 p-3">                        
+                                
+                                <h3>{{ post.titulo}}</h3>
+                            </a>
+                            <p>{{ post.corpo }}</p>
+                            
+                        </div>
+
+                        <div class=" justify-content-between mt-4 gap-2 align-items-center ">
+                        
+                            <a href="{{ url_for('editar_perfil') }}" class=" w-10 p-3">
+                                avaliar
+                            </a>
+    
+                            <a href="{{ url_for('editar_perfil') }}" class=" w-10 p-3">                        
+                                opinar
+                            </a>
+
+                            <a href="{{ url_for('editar_perfil') }}" class=" w-10 p-3">
+                                +clube
+                            </a>
+    
+                            <a href="{{ url_for('editar_perfil') }}" class=" w-10 p-3">                        
+                                Ver Perfil
+                            </a>
+                            
+    
+                        </div>
+
+                    </div>
+                
+
+            </div>
+
+
+
+        {% endfor %}
+        
+    </div>
+{% endblock %}
