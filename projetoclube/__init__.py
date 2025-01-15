@@ -4,12 +4,20 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
+import os
 
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'aa749d5659aa92382d79c177cdb4445e057b2184'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///clube.db' # configuracao do banco de dados local
+
+if os.getenv('DATABASE_URL'):
+    
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL') # configuracao do banco de dados no servidor
+
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///clube.db' # configuracao do banco de dados local
+
 database = SQLAlchemy(app)# criando o banco de dados
 bcrypt = Bcrypt(app)# usando essa classe so meu site será capaz de criptrografar e descriptrografar
 login_manager = LoginManager(app)
