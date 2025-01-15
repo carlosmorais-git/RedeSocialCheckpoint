@@ -10,14 +10,14 @@ import sqlalchemy
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'aa749d5659aa92382d79c177cdb4445e057b2184'
-link_DB = app.config['SQLALCHEMY_DATABASE_URI']
+
 
 if os.getenv('DATABASE_URL'):
     
-    link_DB = os.getenv('DATABASE_URL') # configuracao do banco de dados no servidor
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL') # configuracao do banco de dados no servidor
 
 else:
-    link_DB = 'sqlite:///clube.db' # configuracao do banco de dados local
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///clube.db' # configuracao do banco de dados local
 
 database = SQLAlchemy(app)# criando o banco de dados
 bcrypt = Bcrypt(app)# usando essa classe so meu site será capaz de criptrografar e descriptrografar
@@ -34,7 +34,7 @@ login_manager.login_message_category = 'alert-warning'
 
 from projetoclube import models
 
-engine = sqlalchemy.create_engine(link_DB)
+engine = sqlalchemy.create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
 
 # esse inspector serve para verificar se uma tabela existe dentro do banco de dados
 inspector = sqlalchemy.inspect(engine)
