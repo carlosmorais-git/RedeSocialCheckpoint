@@ -4,85 +4,348 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Perfil</title>
-    <style>
-        #foto_perfil {
-            display: none;
+   <style>
+    .Tela_Vender {
+        width: 1200px;
+        height: 650px;
+        background: #938e93;
+    }
+        .bgfundo {
+        width: 1200px;
+        height: 650px;
         }
+        .fundo {
+        width: 1200px;
+        height: 650px;
+        background: #938e94;
+        }
+        .fundo {
+        width: 818px;
+        height: 268px;
+        background: #280c2a;
+        }
+        .PRODUTOS {
+        color: #fffdfd;
+        font-family: Inter;
+        font-size: 24px;
+        font-weight: normal;
+        }
+        .TOTAL {
+        color: #280c2a;
+        font-family: Inter;
+        font-size: 24px;
+        font-weight: normal;
+        }
+        .UNI {
+        color: #fffdfd;
+        font-family: Inter;
+        font-size: 24px;
+        font-weight: normal;
+        }
+        .TAMANHOS {
+        color: #fffdfd;
+        font-family: Inter;
+        font-size: 24px;
+        font-weight: normal;
+        }
+        .Resumo {
+        color: #280c2a;
+        font-family: Inter;
+        font-size: 24px;
+        font-weight: normal;
+        }
+    
+  .textexibirpedido {
+    width: 318px;
+    height: 560px;
+    background: #fffdfd;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .Rectangle_11 {
+    width: 91px;
+    height: 40px;
+    background: #fffdfd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .areaframe {
+    width: 788px;
+    height: 340px;
+    .Rectangle_13 {
+      width: 788px;
+      height: 340px;
+      background: rgba(255, 255, 255, 0);
+      border-radius: 5px;
+    }
+    .Complementos {
+      color: rgba(0, 0, 0, 0.38);
+      font-family: Inter;
+      font-size: 20px;
+      font-weight: 700;
+    }
+  }
+  .buttoncomplementos {
+    width: 788px;
+    height: 31px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    .Rectangle_13 {
+      width: 788px;
+      height: 31px;
+      background: #56155b;
+      border-radius: 10px;
+    }
+    .Sabores {
+      color: #ffffff;
+      font-family: Inter;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+    }
+  }
+  .buttonpedido {
+    width: 235px;
+    height: 31px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    .Rectangle_4 {
+      width: 235px;
+      height: 31px;
+      background: #0cc81f;
+      border-radius: 10px;
+    }
+    .__Pedido {
+      color: #fffdfd;
+      font-family: Inter;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+  .buttonacrescimo {
+    width: 235px;
+    height: 31px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    .Rectangle_4 {
+      width: 235px;
+      height: 31px;
+      background: #56155b;
+      border-radius: 10px;
+    }
+    .Acrscimo {
+      color: #ffffff;
+      font-family: Inter;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+  .buttoncoberturas {
+    width: 235px;
+    height: 31px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    .Rectangle_4 {
+      width: 235px;
+      height: 31px;
+      background: #56155b;
+      border-radius: 10px;
+    }
+    .Coberturas {
+      color: #ffffff;
+      font-family: Inter;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+  .Rectangle_12 {
+    width: 170px;
+    height: 40px;
+    background: #fffdfd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .botaoreiniciar {
+    width: 54px;
+    height: 37px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    .Rectangle_15 {
+      width: 54px;
+      height: 37px;
+      background: #ef0000;
+      border-radius: 10px;
+    }
+  }
+  .textobservacoes {
+    width: 789px;
+    height: 41px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    .Rectangle_10 {
+      width: 789px;
+      height: 41px;
+      background: #fdfeff;
+      border-radius: 10px;
+    }
+  }
+  .frameplanolongo {
+    width: 783px;
+    height: 1px;
+    .Rectangle_10 {
+      width: 783px;
+      height: 1px;
+      border-radius: 10px;
+    }
+  }
+  .buttonFinalizar {
+    width: 255px;
+    height: 87px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),0px 4px 4px rgba(0, 0, 0, 0.25);
+    .Rectangle_5 {
+      width: 255px;
+      height: 87px;
+      background: #021f83;
+      border-radius: 10px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0);
+    }
+    .FINALIZAR {
+      color: #ffffff;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      font-family: Inter;
+      font-size: 36px;
+      font-weight: 800;
+      text-align: center;
+    }
+  }
+  .entryproduto {
+    width: 401px;
+    height: 40px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    .entryproduto {
+      width: 401px;
+      height: 40px;
+      background: #ffffff;
+      border-radius: 10px;
+    }
+  }
+  .buttoncliente {
+    width: 319px;
+    height: 43px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),0px 4px 4px rgba(0, 0, 0, 0.25);
+    .Rectangle_6 {
+      width: 319px;
+      height: 43px;
+      background: #280c2a;
+      border-radius: 10px;
+    }
+    .buttonpesquisar {
+      color: #ffffff;
+      font-family: Inter;
+      font-size: 22px;
+      font-weight: normal;
+      text-align: center;
+    }
+  }
+  .entrytotal {
+    width: 233px;
+    height: 87px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),0px 4px 4px rgba(0, 0, 0, 0.25);
+    .total {
+      width: 233px;
+      height: 87px;
+      background: #ffffff;
+      border: 1px solid #000000;
+      border-radius: 10px;
+    }
+  }
+  .btformapagamento {
+    width: 159px;
+    height: 79px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),0px 4px 4px rgba(0, 0, 0, 0.25);
+    .Rectangle_7 {
+      width: 159px;
+      height: 79px;
+      background: #56155b;
+      border-radius: 10px;
+    }
+    .R {
+      color: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      font-family: Inter;
+      font-size: 48px;
+      font-weight: 700;
+      text-align: center;
+    }
+  }
+  .Rectangle_14 {
+    width: 12px;
+    height: 520px;
+    background: #d9d9d9;
+    border-radius: 5px;
+  }
 
-        label {
-            cursor: pointer;
-            background-color: #007bff;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            display: inline-block;
-            font-size: 14px;
-        }
-
-        #file-name {
-            font-size: 14px;
-            margin-left: 10px;
-            color: gray;
-        }
-
-        .btn-cancelar {
-            cursor: pointer;
-            background-color: #ff4d4d;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            display: inline-block;
-            font-size: 14px;
-            margin-left: 10px;
-        }
-    </style>
+   </style>
 </head>
 <body>
-    <form action="/perfil/editar" method="POST" enctype="multipart/form-data">
-        <!-- Imagem atual do perfil -->
-        <img id="foto-atual" src="/static/fotos_perfil/imagem_atual.png" 
-             alt="Foto de perfil" width="100" height="100" style="border-radius: 50%;">
-        <br><br>
-
-        <!-- Botão para selecionar nova foto -->
-        <label for="foto_perfil">Escolher Foto</label>
-        <input type="file" id="foto_perfil" name="foto_perfil" accept="image/*">
-        <span id="file-name"></span>
-
-        <!-- Botão para cancelar -->
-        <span class="btn-cancelar" id="cancelar">Cancelar</span>
-
-        <br><br>
-        <button type="submit">Salvar</button>
-    </form>
-
-    <script>
-        const inputFile = document.getElementById('foto_perfil');
-        const fileNameDisplay = document.getElementById('file-name');
-        const cancelarButton = document.getElementById('cancelar');
-        const fotoAtual = document.getElementById('foto-atual');
-
-        // Quando um arquivo é selecionado, exibe o nome do arquivo
-        inputFile.addEventListener('change', function () {
-            if (this.files && this.files[0]) {
-                fileNameDisplay.textContent = this.files[0].name;
-            } else {
-                fileNameDisplay.textContent = "";
-            }
-        });
-
-        // Botão cancelar: limpa o campo de arquivo e restaura o estado inicial
-        cancelarButton.addEventListener('click', function () {
-            // Limpa o campo de upload
-            inputFile.value = "";
-            fileNameDisplay.textContent = "";
-
-            // Recarrega a imagem para a original (opcional)
-            fotoAtual.src = "/static/fotos_perfil/imagem_atual.png";
-
-            // Opcional: exibe um alerta ou mensagem de cancelamento
-            console.log("Alteração de foto cancelada");
-        });
-    </script>
+    <div class="Tela_Vender">
+        <div class="bgfundo">
+         <p class="fundo"></p>
+         <p class="fundo"></p>
+         <div class="PRODUTOS">PRODUTOS</div>
+         <div class="TOTAL">TOTAL</div>
+         <div class="UNI">UNI</div>
+         <div class="TAMANHOS">TAMANHOS</div>
+         <div class="Resumo">FORMA DE PAGAMENTO</div>
+        </div>
+        <p class="textexibirpedido"></p>
+        <p class="Rectangle_11"></p>
+        <div class="areaframe">
+         <p class="Rectangle_13"></p>
+         <div class="Complementos">Complementos</div>
+        </div>
+        <div class="buttoncomplementos">
+         <p class="Rectangle_13"></p>
+         <div class="Sabores">Sabores</div>
+        </div>
+        <div class="buttonpedido">
+         <p class="Rectangle_4"></p>
+         <div class="__Pedido">+ Pedido</div>
+        </div>
+        <div class="buttonacrescimo">
+         <p class="Rectangle_4"></p>
+         <div class="Acrscimo">Acréscimo</div>
+        </div>
+        <div class="buttoncoberturas">
+         <p class="Rectangle_4"></p>
+         <div class="Coberturas">Coberturas</div>
+        </div>
+        <p class="Rectangle_12"></p>
+        <div class="botaoreiniciar">
+         <p class="Rectangle_15"></p>
+        </div>
+        <div class="textobservacoes">
+         <p class="Rectangle_10"></p>
+        </div>
+        <div class="frameplanolongo">
+         <p class="Rectangle_10"></p>
+        </div>
+        <div class="buttonFinalizar">
+         <p class="Rectangle_5"></p>
+         <div class="FINALIZAR">FINALIZAR</div>
+        </div>
+        <div class="entryproduto">
+         <p class="entryproduto"></p>
+        </div>
+        <div class="buttoncliente">
+         <p class="Rectangle_6"></p>
+         <div class="buttonpesquisar">🔍  BUSCAR FREGUÊS</div>
+        </div>
+        <div class="entrytotal">
+         <p class="total"></p>
+        </div>
+        <div class="btformapagamento">
+         <p class="Rectangle_7"></p>
+         <div class="R">R$</div>
+        </div>
+        <p class="Rectangle_14"></p>
+       </div>
+       
 </body>
 </html>
