@@ -10,7 +10,6 @@ import logging
 
 
 # Configuração de logs
-
 '''
 Controle de Nível : Permite categorizar mensagens por gravidade, como:
 
