@@ -70,7 +70,6 @@ instance/
 .webassets-cache
 instance/bancoDB.db
 bancoDB.db
-clube.db
 
 # Scrapy stuff:
 .scrapy
